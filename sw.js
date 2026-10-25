@@ -1,5 +1,5 @@
 /* 삐삐 수술 노트 — 오프라인 서비스 워커 */
-const CORE='pippi-core-28b05d3f52';
+const CORE='pippi-core-b2c8225e3e';
 const CORE_FILES=['./','index.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','pippi_face.jpg','pippi_hero.jpg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CORE).then(c=>c.addAll(CORE_FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('pippi-core-')&&k!==CORE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

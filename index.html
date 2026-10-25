@@ -1344,9 +1344,9 @@ window.PLACE = {"disc": [[13, "disc_001", "손글씨 메모 카드 — dura 봉�
     if(b.dataset.busy)return;b.dataset.busy='1';msg.textContent='불러오는 중…';
     try{const r=await fetch(b.dataset.vsrc);if(!r.ok)throw new Error(r.status);const bl=await r.blob();v.src=URL.createObjectURL(new Blob([bl],{type:'video/mp4'}));v.controls=true;b.remove();await v.play().catch(()=>{})}
     catch(err){msg.textContent='재생 실패 — 다시 눌러주세요';delete b.dataset.busy}});
-  /* 🐾 이스터 에그 — 왼쪽 위 삐삐 얼굴을 연속으로 5번 톡톡 */
+  /* 🐾 이스터 에그 — 왼쪽 위 삐삐 얼굴을 누르면 등장 */
   (function(){
-    const MSG=['오늘도 수고 많았어요! 🐾','삐삐가 응원해요 💙','수술실 최고의 스크럽 너스!','물 한 잔 마시고 가요 🥤','오늘 하루도 빛났어요 ✨','실수해도 괜찮아, 삐삐가 있잖아!'];
+    const MSG=['언니 오늘도 수고했어~!!! 💙','언니 오늘도 수고했어~!!! 🐾','오늘도 수고 많았어요! 🐾','삐삐가 응원해요 💙','수술실 최고의 스크럽 너스!','물 한 잔 마시고 가요 🥤','오늘 하루도 빛났어요 ✨','실수해도 괜찮아, 삐삐가 있잖아!'];
     const egg=document.createElement('div'); egg.className='egg'; egg.hidden=true; egg.setAttribute('role','dialog'); egg.setAttribute('aria-label','삐삐 이스터 에그');
     egg.innerHTML='<div class="egg-card"><div class="egg-vid"><video id="eggv" playsinline muted loop poster="e/pippi_dance.jpg"></video><button type="button" id="eggs" class="egg-snd">🔇 소리 켜기</button></div><p class="egg-hi">짠! 삐삐 등장 🎉</p><p class="egg-msg" id="eggm"></p><button type="button" id="eggx" class="egg-x">고마워 삐삐 💙</button><p class="egg-tip">아래로 내리거나 바깥을 눌러도 닫혀요</p></div>';
     document.body.appendChild(egg);
@@ -1368,8 +1368,7 @@ window.PLACE = {"disc": [[13, "disc_001", "손글씨 메모 카드 — dura 봉�
       if(!htitle.classList.contains('brand')) return;
       const r=htitle.getBoundingClientRect(); if(e.clientX>r.left+48) return; /* 얼굴 부분만 */
       htitle.classList.remove('wig'); void htitle.offsetWidth; htitle.classList.add('wig');
-      taps++; clearTimeout(tt); tt=setTimeout(()=>{taps=0},1400);
-      if(taps>=5){taps=0;show()}
+      setTimeout(show,180);
     });
   })();
   /* 메모 사진·영상 — 해당 단계 카드 안에 넣기 */
